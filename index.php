@@ -44,7 +44,9 @@ require 'UsuarioDados.class.php';
         $senha = $_POST["usuario_senha"];
 
         $obj_user = new UsuarioDados($nome, $senha);
-        $obj_user->validarUsuario();
+        $array = $obj_user->validarUsuario();
+        
+        echo "Bem - vindo, ".' '.$array["nome"];
 
     }else {
     
