@@ -42,8 +42,10 @@ class UsuarioDados {
                 echo "Usuário ou senha invalidos.";
                 $obj_conexao->desconectar();
                 die();
-
             }
+        }else {
+            echo "Não foi possível conectar ao banco.";
+            die();
         }
         return $array;
     }

@@ -12,7 +12,7 @@ require 'UsuarioDados.class.php';
         </head>
         <body style="margin: 0px;padding: 0px; background-color: #dcecea;">
         <div style="margin: 0 auto;width: 25%;border: 1px solid;border-radius: 5px;margin-top: 10%;
-        background-color:#e9e9e9;class = "form control">
+        background-color:#e9e9e9;class="form control">
             <div style="height: 10px;background-color:#00786e"></div>
             <form action="index.php" method="POST" style="padding-top: 50px;padding-right: 30px;padding-bottom: 50px;padding-left: 80px;">
                 <label for="usuario_login"><b>Usu&aacute;rio:</b></label> <br>
