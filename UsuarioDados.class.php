@@ -30,7 +30,7 @@ class UsuarioDados {
         $conectou = $obj_conexao->conectar();
 
         if($conectou){
-            $sql = "SELECT * FROM tbusuario t WHERE t.usuario = '$nome' AND t.senha = '$senha'";
+            $sql = "SELECT t.nome_usuario, t.nivel_usuario FROM tbusuario t WHERE t.usuario = '$nome' AND t.senha = '$senha'";
             $consulta = $obj_conexao->consultar($sql);
             
             if(mysqli_num_rows($consulta)){
@@ -39,9 +39,8 @@ class UsuarioDados {
                     $obj_conexao->desconectar();
                 }
             }else {
-                echo "Usuário ou senha invalidos.";
+                return 1;
                 $obj_conexao->desconectar();
-                die();
             }
         }else {
             echo "Não foi possível conectar ao banco.";
