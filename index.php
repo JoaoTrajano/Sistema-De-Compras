@@ -1,57 +1,97 @@
 <?php
 require 'UsuarioDados.class.php';
-    $corpo = 
+$strAlerta = '';
+$corpo =
     '<html>
         <head>
             <title>Login</title>
             <meta charset="UTF-8">
+            <link rel="stylesheet" type="text/css" href="http://localhost/plataforma/_css/style_default.css" >
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+            <link rel="icon" type="shortcut icon" href="http://localhost/plataforma/_img/logo.ico" />
+            <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
         </head>
-        <body style="margin: 0px;padding: 0px; background-color: #dcecea;">
-        <div style="margin: 0 auto;width: 25%;border: 1px solid;border-radius: 5px;margin-top: 10%;
-        background-color:#e9e9e9;class="form control">
-            <div style="height: 10px;background-color:#00786e"></div>
-            <form action="index.php" method="POST" style="padding-top: 50px;padding-right: 30px;padding-bottom: 50px;padding-left: 80px;">
-                <label for="usuario_login"><b>Usu&aacute;rio:</b></label> <br>
-                <input style="border-radius: 1px;" "type="text" id="usuario_login" name ="usuario_login" 
-                placeholder="Seu usu&aacute;rio." />
-
-                 <br><br>
-                <label for="usuario_senha"><b>Senha: </b></label> <br>
-                <input style="border-radius: 1px;" type="password" id="usuario_senha" name ="usuario_senha" 
-                placeholder="Digite a sua senha."/>
-                    
-                <br><br><br>
-                <div style="align: center;">
-                    <button type="submit" name="confirmar">Entrar</button>
+        <body style=" background-color: #dcecea;">
+            <div class="container w-50 p-3" >
+                <div class="row" >
+                    <div class="col-md-8 col-sm-8">
+                        logo do cliente aqui
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <img src="http://localhost/plataforma/_img/logo.png"" alt="WiseSystem">
+                    </div>
                 </div>
-                
-            </form>
-            <div style="text-align: center;">
-               <a href="#link" > Esqueceu sua senha?</a>
-            </div>
-            <div style="height: 10px;background-color:#00786e"></div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-12" style="background-color:#00786e;text-align: center;color:white;height:30px;padding:5px;">
+                       <span>Bem Vindo!<span>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="row" style="background-color:white;padding:10px;">
+                    <div class="col-md-12" style="padding:10px;">
+                        <form action="index.php" method="POST">
+                            <div class="form-group">
+                                <label for="usuario"><span style="float:left;"><img src="http://localhost/plataforma/_img/login.jpg" alt="user" width="45"><span></label>
+                                <input class="form-control" "type="text" id="usuario" name ="usuario_login" 
+                                placeholder="Seu usu&aacute;rio." />
+                                <br>
+                                <label for="usuario_senha"><span style="float:left;"><img src="http://localhost/plataforma/_img/cadeado.png" alt="user" width="45"><span></label> 
+                                <input class="form-control" type="password" id="usuario_senha" name ="usuario_senha" 
+                                placeholder="Digite a sua senha."/> 
+                                <br>
+                                <input name="confirmar" class="btn btn-outline-success form-control" type="submit" value="Entrar">
+                            </div>
+                        </form>
+                        <div class="row" style="text-align:center;">
+                            <div class="col-md-12">
+                                <span ><a href="#link" > Esqueceu sua senha?</a></span>
+                                <br>
+                                <span ><a href="#link" > Editar Login.</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-12" style="background-color:#00786e;text-align: center;height:30px;"></div>
+                </div>
          </div>
         </body>
     </html>';
 
-    if (isset($_POST["confirmar"])) {
+if (isset($_POST["confirmar"])) {
 
-        $nome = $_POST["usuario_login"];
-        $senha = $_POST["usuario_senha"];
+    $nome = $_POST["usuario_login"];
+    $senha = $_POST["usuario_senha"];
 
-        $obj_user = new UsuarioDados($nome, $senha);
-        $array = $obj_user->validarUsuario();
-        
-        echo "Bem - vindo, ".' '.$array["nome"];
+    $obj_user = new UsuarioDados($nome, $senha);
+    $array = $obj_user->validarUsuario();
 
-    }else {
-    
-        echo $corpo;
-
+    if (is_array($array)) {
+        echo "Bem - vindo, " . ' ' . $array["nome"];
+    } else {
+        echo
+        '<div class="container w-50 p3">
+            <div class="row">
+                <div class="col-md-12" style="height:10px;">
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert" style="text-align:center;">
+                    <span ><strong>Usu&aacuterio ou Senha Inv&aacutelidos</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>';
     }
+}
+    
+    echo $corpo;
 
 ?>
