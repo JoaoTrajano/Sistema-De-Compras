@@ -36,11 +36,16 @@ class UsuarioDados {
             if(mysqli_num_rows($consulta)){
                 while($row = mysqli_fetch_array($consulta)){
                     $array = array("nome"=>$row["nome_usuario"], "nivel"=>$row["nivel_usuario"]);
+                    $_SESSION['nome_usuario'] = $array['nome'];
+                    $_SESSION['nivel_usuario'] = $array['nivel'];
                     $obj_conexao->desconectar();
                 }
             }else {
-                return 1;
+                unset($_SESSION['nome_usuario']);
+                unset($_SESSION['nivel_usuario']);
                 $obj_conexao->desconectar();
+                return 1;
+                
             }
         }else {
             echo "Não foi possível conectar ao banco.";
