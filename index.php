@@ -40,7 +40,6 @@ if (isset($_POST["confirmar"])) {
         </div>';
     }
 }
-
 echo $v->layoutLogin();
 
 ?>
