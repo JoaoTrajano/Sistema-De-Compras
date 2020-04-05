@@ -39,7 +39,7 @@ class VisaoMatriz
                     <div class="row">
                         <div class=" col-sm-2 col-md-4 col-lg-4 col-xl-4"></div>
                         <div class=" col-sm-4 col-md-6 col-lg-6 col-xl-6">
-                            <img src="http://localhost/plataforma/_img/logo-cliente.jpg" alt="user" width="190">
+                            
                         </div>
                     </div>
                     <div class="row">
@@ -69,6 +69,11 @@ class VisaoMatriz
                                     <span ><a href="#link" > Esqueceu sua senha?</a></span>
                                     <br>
                                     <span ><a href="#link" > Editar Login.</a></span><br>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="http://localhost/plataforma/_img/logo-cliente.jpg" alt="user" width="150">
+                                </div>
+                                <div class="col-md-6">
                                     <img src="http://localhost/plataforma/_img/logo.png"" alt="WiseSystem" width="105">
                                 </div>
                             </div>
@@ -77,6 +82,7 @@ class VisaoMatriz
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-12" style="background-color:#00786e;text-align: center;height:30px;"></div>
+                        
                     </div>
              </div>
             </body>
