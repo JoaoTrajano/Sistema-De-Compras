@@ -20,6 +20,19 @@ class VisaoMatriz
                 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+                <script>
+                    $(document).ready(function(){
+                        $("#form-principal").submit(function(){
+                            if($("#usuario").val() == "" || $("#usuario_senha").val() == "")
+                            {
+                                alert("Preencha os Campos Corretamente!");
+                                return false;
+                            }else{
+                                return true;
+                            }     
+                        });
+                    });
+                </script>
             </head>
             <body style=" background-color: #dcecea;">
                 <div class="container w-50 p-3" >
@@ -40,7 +53,7 @@ class VisaoMatriz
                     <div class="col-md-3"></div>
                     <div class="row" style="background-color:white;padding:10px;">
                         <div class="col-md-12" style="padding:10px;">
-                            <form action="index.php" method="POST">
+                            <form action="index.php" method="POST" id="form-principal">
                                 <div class="form-group">
                                     <label for="usuario"><span style="float:left;"><img src="http://localhost/plataforma/_img/login.jpg" alt="user" width="45"><span></label>
                                     <input class="form-control" "type="text" id="usuario" name ="usuario_login" 
