@@ -36,11 +36,7 @@ class VisaoMatriz
             </head>
             <body style=" background-color: #dcecea;">
                 <div class="container w-50 p-3" >
-                    <div class="row">
-                        <div class=" col-sm-2 col-md-4 col-lg-4 col-xl-4"></div>
-                        <div class=" col-sm-4 col-md-6 col-lg-6 col-xl-6">
-                            
-                        </div>
+                    <div class="row" style="height:45px;">
                     </div>
                     <div class="row">
                         <div class="col-md-3"></div>
