@@ -11,6 +11,7 @@ $v = new VisaoMatriz();
         $_SESSION['nivel_usuario'] = '';
     }
 
+
 if (isset($_POST["confirmar"])) {
 
     $nome = $_POST["usuario_login"];
@@ -38,8 +39,8 @@ if (isset($_POST["confirmar"])) {
             </div>
         </div>';
     }
-
 }
+
 echo $v->layoutLogin();
 
 ?>
