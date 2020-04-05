@@ -62,7 +62,7 @@ class VisaoMatriz
                             </form>
                             <div class="row" style="text-align:center;">
                                 <div class="col-md-12">
-                                    <span ><a href="#link" > Esqueceu sua senha?</a></span>
+                                    <span ><a href="http://localhost/plataforma/usuario_recuperar_senha.php" > Esqueceu sua senha?</a></span>
                                     <br>
                                     <span ><a href="#link" > Editar Login.</a></span><br>
                                 </div>
