@@ -1,6 +1,6 @@
 <?php
 
-require 'Conexao.class.php';
+require_once "model/Conexao.class.php";
 
 class UsuarioDados {
 
@@ -52,5 +52,25 @@ class UsuarioDados {
             die();
         }
         return $array;
+    }
+
+    public function recuperarLoginUsuario($codusuario){
+
+        $obj_conexao = new Conexao("localhost", "root", '');
+        $conectou = $obj_conexao->conectar();
+
+        if($conectou){
+            $sql = "SELECT t.usuario,  t.senha FROM tbusuario t WHERE t.usuario = '$codusuario'";
+            $consulta = $obj_conexao->consultar($sql);
+
+            while($row = mysqli_fetch_array($consulta)){
+                $arrayUsuario = array("usuario"=>$row["usuario"], "senha"=>$row["senha"]);
+                return $arrayUsuario;
+            }
+
+        }else {
+            $obj_conexao->desconectar();
+        }
+
     }
 }
