@@ -74,4 +74,28 @@ class UsuarioDados {
         }
 
     }
+
+    public function attSenha($senha_antiga, $senha_nova, $codusuario){
+
+        $obj_conexao = new Conexao("localhost", "root", '');
+        $conectou = $obj_conexao->conectar();
+
+        if($conectou){
+            $sql="UPDATE tbusuario u set u.senha = '$senha_nova' WHERE u.senha = '$senha_antiga'
+            AND u.id_usuario = $codusuario";
+
+            $consulta = $obj_conexao->consultar($sql);
+
+            if($consulta){
+               return 1;
+            }
+
+        }else {
+            return 0;
+            $obj_conexao->desconectar();
+        }
+        
+
+
+    }
 }

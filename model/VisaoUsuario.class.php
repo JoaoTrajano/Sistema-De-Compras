@@ -1,10 +1,11 @@
 <?php
 
-class VisaoUsuario {
+class VisaoUsuario
+{
 
     public function layoutLogin()
     {
-       $this->corpo =
+        $this->corpo =
             '
             <html>
             <head>
@@ -61,7 +62,7 @@ class VisaoUsuario {
                                 <div class="col-md-12">
                                     <span ><a href="http://localhost/plataforma/view/usuario_recuperar_senha.php" > Esqueceu sua senha?</a></span>
                                     <br>
-                                    <span ><a href="#link" > Editar Login.</a></span><br>
+                                    <span ><a href="http://localhost/plataforma/view/usuario_atualizar_senha.php" > Editar Login.</a></span><br>
                                 </div>
                                 <div class="col-md-6">
                                     <img src="http://localhost/plataforma/_img/logo-cliente.jpg" alt="user" width="150">
@@ -171,6 +172,95 @@ class VisaoUsuario {
             </body>
         </html>';
 
+        return $this->corpo;
+    }
+
+    public function layoutAttLogin()
+    {
+        $this->corpo =
+            '
+        <html>
+        <head>
+            <title>Recuperar Senha.</title>
+            <meta charset="UTF-8">
+            <link rel="stylesheet" type="text/css" href="http://localhost/plataforma/_css/style_default.css" >
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+            <link rel="icon" type="shortcut icon" href="http://localhost/plataforma/_img/logo.ico" />
+            <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+            <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+            <script>
+                $(document).ready(function(){
+                    $("#form-principal").submit(function(){
+                        if($("#cod_usuario").val() == "")
+                        {
+                            alert("Preencha os Campos Corretamente!");
+                            return false;
+                        }else{
+                            return true;
+                        }     
+                    });
+                });
+
+                function infoUsuer(){
+                    var codusuario = $("#cod_usuario").val();
+                    var conteudo = $("#user").html();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost/plataforma/_ajax/ajax_atualizar_senha_usuario.php",
+                        data: "&codusuario="+codusuario,
+                        success: function(msg){
+                            $("#user").html("Carregando...");
+                            $("#user").html(msg);
+                            
+                        },
+                        error: function(){
+                            console.log("erro");
+                        }                        
+                    });
+                }
+            </script>
+        </head>
+        <body style=" background-color: #B0E0E6;">
+            <div class="container w-50 p-3" >
+                <div class="row" style="height:45px;">
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-12" style="background-color:#182653;text-align: center;color:white;height:30px;padding:5px;">
+                       
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="row" style="background-color:white;padding:10px;">
+                    <div class="col-md-12" style="padding:10px;">
+                        <form action="http://localhost/plataforma/view/usuario_atualizar_senha.php" method="POST" id="form-principal">
+                            <div class="form-group">
+                                <label for="usuario"><span style="float:left;"><img src="http://localhost/plataforma/_img/login.jpg" alt="user" width="45"><span></label>
+                                <input class="form-control" "type="text" id="cod_usuario" name ="usuario_login" 
+                                placeholder="Informe seu código de Usuário." onblur="infoUsuer()" />
+                                <br>
+                                <div id="user"></div>
+                            </div>
+                        </form>
+                        <br><br><br>
+                        <div class="row" style="text-align:center;">
+                            <br><br><br>     
+                            <div class="col-md-3">
+                             <img src="http://localhost/plataforma/_img/ico_voltar.png" width="20"> <a name="" id="" class="btn btn-outline-primary" href="http://localhost/plataforma/index.php" role="button">Voltar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-12" style="background-color:#182653;text-align: center;height:30px;"></div>
+                </div>
+         </div>
+            </body>
+        </html>';
         return $this->corpo;
     }
 }
