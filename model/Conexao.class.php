@@ -15,6 +15,10 @@
             $this->dataset = 'bd_venda';
         }
 
+        public function getInstancia(){
+            return $this->instancia;
+        }
+
         public function conectar()
         {
             $this->instancia = mysqli_connect($this->localhost,$this->nome_usuario,$this->sennha_banco,$this->dataset);

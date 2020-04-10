@@ -34,7 +34,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-danger" role="alert" style="text-align:center;">
-                    <span ><strong>Não foi possivel atualizar a senha!</strong></span>
+                    <span ><strong>Não foi possivel atualizar a senha!</strong></span><br>
+                    <span ><strong>Verifique a senha antiga e tente novamente!</strong></span>
                     </div>
                 </div>
             </div>

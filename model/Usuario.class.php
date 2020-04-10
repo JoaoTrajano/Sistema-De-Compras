@@ -84,10 +84,14 @@ class UsuarioDados {
             $sql="UPDATE tbusuario u set u.senha = '$senha_nova' WHERE u.senha = '$senha_antiga'
             AND u.id_usuario = $codusuario";
 
-            $consulta = $obj_conexao->consultar($sql);
+            $obj_conexao->consultar($sql);
+            
+            $linhas_afetadas = mysqli_affected_rows($obj_conexao->getInstancia());
 
-            if($consulta){
+            if($linhas_afetadas > 0){
                return 1;
+            }else {
+                return 0;
             }
 
         }else {
