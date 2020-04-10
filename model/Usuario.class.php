@@ -1,6 +1,6 @@
 <?php
 
-require_once "model/Conexao.class.php";
+require_once "Conexao.class.php";
 
 class UsuarioDados {
 
@@ -60,7 +60,8 @@ class UsuarioDados {
         $conectou = $obj_conexao->conectar();
 
         if($conectou){
-            $sql = "SELECT t.usuario,  t.senha FROM tbusuario t WHERE t.usuario = '$codusuario'";
+            $sql = "SELECT t.usuario, t.senha FROM tbusuario t WHERE t.id_usuario = '$codusuario'";
+         
             $consulta = $obj_conexao->consultar($sql);
 
             while($row = mysqli_fetch_array($consulta)){

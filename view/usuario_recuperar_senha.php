@@ -1,6 +1,6 @@
 <?php
 
-require_once '../model/VisaoUsuario.class.php';
+require_once "..\model\VisaoUsuario.class.php";
 
 $v = new VisaoUsuario();
 
