@@ -37,6 +37,7 @@
         }
 
         public function consultar($sql) {
+            $this->conectar();
             return mysqli_query($this->instancia,$sql);
         }
 
