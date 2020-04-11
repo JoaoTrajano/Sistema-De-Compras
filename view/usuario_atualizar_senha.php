@@ -43,4 +43,4 @@
         }
     }
 
-    echo $v->layoutAttLogin();
+$v->layoutAttLogin();

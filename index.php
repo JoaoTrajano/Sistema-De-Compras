@@ -5,7 +5,7 @@ require_once "model/VisaoUsuario.class.php";
 $v = new VisaoUsuario();
 
 session_start();
-if(!isset($_SESSION['nome_usuario'])){
+if (!isset($_SESSION['nome_usuario'])) {
     $_SESSION['nome_usuario'] = '';
     $_SESSION['nivel_usuario'] = '';
 }
@@ -22,7 +22,7 @@ if (isset($_POST["confirmar"])) {
         header('Location: http://localhost/plataforma/view/menu.php ');
     } else {
         echo
-        '<div class="container w-50 p3">
+            '<div class="container w-50 p3">
             <div class="row">
                 <div class="col-md-12" style="height:10px;"></div>
             </div>
@@ -36,4 +36,4 @@ if (isset($_POST["confirmar"])) {
         </div>';
     }
 }
-echo $v->layoutLogin();
+$v->layoutLogin();

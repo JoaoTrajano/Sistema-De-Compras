@@ -82,7 +82,7 @@ class VisaoUsuario
             </body>
         </html>';
 
-        return $this->corpo;
+     echo $this->corpo;
     }
 
     public function layoutResgatarSenha()
@@ -172,7 +172,7 @@ class VisaoUsuario
             </body>
         </html>';
 
-        return $this->corpo;
+        echo $this->corpo;
     }
 
     public function layoutAttLogin()
@@ -261,6 +261,6 @@ class VisaoUsuario
          </div>
             </body>
         </html>';
-        return $this->corpo;
+        echo $this->corpo;
     }
 }
