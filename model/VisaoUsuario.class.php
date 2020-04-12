@@ -82,7 +82,7 @@ class VisaoUsuario
             </body>
         </html>';
 
-     echo $this->corpo;
+        echo $this->corpo;
     }
 
     public function layoutResgatarSenha()
@@ -181,7 +181,7 @@ class VisaoUsuario
             '
         <html>
         <head>
-            <title>Recuperar Senha.</title>
+            <title>Editar Usuário</title>
             <meta charset="UTF-8">
             <link rel="stylesheet" type="text/css" href="http://localhost/plataforma/_css/style_default.css" >
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
@@ -263,4 +263,5 @@ class VisaoUsuario
         </html>';
         echo $this->corpo;
     }
+
 }
