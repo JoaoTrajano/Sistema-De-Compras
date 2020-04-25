@@ -13,7 +13,7 @@ if(empty($nome)){
 
 $corpo = '<html>
         <head>
-            <title>Principal</title>
+            <title>Consultar Solicitação.</title>
             <meta charset="UTF-8">
             <link rel="stylesheet" type="text/css" href="http://localhost/plataforma/_css/style_default.css" >
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >

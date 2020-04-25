@@ -39,7 +39,7 @@ class VisaoUsuario
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-12" style="background-color:#00786e;text-align: center;color:white;height:30px;padding:5px;">
-                           <span>Bem Vindo!<span>
+                           
                         </div>
                     </div>
                     <div class="col-md-3"></div>

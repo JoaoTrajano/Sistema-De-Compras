@@ -7,6 +7,7 @@
         private $codproduto;
         private $data;
         private $observacao;
+        private $quantidade;
 
 
         public function setCodSolicitacao($codsolicitacao){
@@ -44,6 +45,28 @@
             return $this->observacao;
         }
 
+        public function setQuantidade($quantidade){
+            $this->quantidade = $quantidade;
+        }
+        public function getQuantidade(){
+            return $this->quantidade;
+        }
+
+        public function inserir(){
+            # code...
+        }
+
+        public function editar(){
+            # code...
+        }
+
+        public function excluir(){
+            # code...
+        }
+
+        public function selecionar(){
+            # code...
+        }
         
 
         
