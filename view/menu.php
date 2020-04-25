@@ -26,7 +26,7 @@ $corpo = '<html>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
         </head>
-        <body>
+        <body style=" background-color: #dcecea;">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -43,7 +43,7 @@ $corpo = '<html>
                                     </div>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="http://localhost/plataforma/sair.php">Logout <img src="http://localhost/plataforma/_img/icone_sair.png" alt="user" width="25" style="float:right;"></a>
+                                    <span class="dropdown-item" onclick="sair()" style="cursor:pointer;" >Logout <img src="http://localhost/plataforma/_img/icone_sair.png" alt="user" width="25" style="float:right;"></span>
                                 </div>
                             </div>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -67,13 +67,13 @@ $corpo = '<html>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        
-                    </div>
-                </div>
-            </div>
+            <script> 
+                function sair(){
+                    if(confirm("Deseja mesmo sair?")){
+                        window.location.href = "http://localhost/plataforma/sair.php";
+                    }
+                }
+            </script>
         </body>
     </html>';
 
