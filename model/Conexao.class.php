@@ -38,7 +38,16 @@
 
         public function consultar($sql) {
             $this->conectar();
-            return mysqli_query($this->instancia,$sql);
+            $consulta = mysqli_query($this->instancia,$sql);
+            
+            if($consulta){
+                $this->desconectar();
+                return $consulta;
+                
+            }else {
+                $this->desconectar();
+            }
+            
         }
 
     }

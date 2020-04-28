@@ -271,10 +271,11 @@ class VisaoUsuario
         } 
         $nome = $_SESSION['nome_usuario'];
         $nivel = $_SESSION['nivel_usuario'];
+        $titulo = $_SESSION['titulo_pagina_atual'];
 
        echo '<html>
         <head>
-            <title>Consultar Solicitação.</title>
+            <title>'.$titulo.'.</title>
             <meta charset="UTF-8">
             <link rel="stylesheet" type="text/css" href="http://localhost/plataforma/_css/style_default.css" >
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >

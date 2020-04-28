@@ -3,6 +3,7 @@
 session_start();
 $nome = $_SESSION['nome_usuario'];
 $nivel_usuario = $_SESSION['nivel_usuario'];
+$_SESSION['titulo_pagina_atual'] = 'Tela Principal';
 
 require '..\model\VisaoUsuario.class.php';
 $menu = new VisaoUsuario();
