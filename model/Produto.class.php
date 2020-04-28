@@ -5,6 +5,7 @@
         private $codproduto;
         private $codfornecedor;
         private $nomeProduto;
+        private $preco;
         private $tipo;
 
         public function setCodProduto($codproduto){
@@ -26,6 +27,13 @@
         }
         public function getCodNomeProduto(){
             return $this->nomeProduto;
+        }
+
+        public function setPreco($preco){
+            $this->preco = $preco;
+        }
+        public function getPreco(){
+            return $this->preco;
         }
 
         public function setTipo($tipo){
