@@ -5,9 +5,9 @@
         private $codsolicitacao;
         private $codsolicitante;
         private $codproduto;
-        private $data;
+        private $datasolicitacao;
         private $observacao;
-        private $quantidade;
+        private $prioridade;
 
 
         public function setCodSolicitacao($codsolicitacao){
@@ -31,11 +31,11 @@
             return $this->codproduto;
         }
 
-        public function setData($data){
-            $this->data = $data;
+        public function setDataSolicitacao($datasolicitacao){
+            $this->datasolicitacao = $datasolicitacao;
         }
-        public function getData(){
-            return $this->data;
+        public function getDataSolicitacao(){
+            return $this->datasolicitacao;
         }
 
         public function setObservacao($observacao){
@@ -45,11 +45,11 @@
             return $this->observacao;
         }
 
-        public function setQuantidade($quantidade){
-            $this->quantidade = $quantidade;
+        public function setPrioridade($prioridade){
+            $this->prioridade = $prioridade;
         }
-        public function getQuantidade(){
-            return $this->quantidade;
+        public function getPrioridade(){
+            return $this->prioridade;
         }
 
         public function inserir(){
