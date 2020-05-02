@@ -1,9 +1,8 @@
 <?php
 
-    class ProdutoEstoque{
+    class EstoqueProduto{
         
         private $codprodutoestoque;
-        private $codproduto;
         private $coordenada;
 
         public function setCodProdutoEstoque($codprodutoestoque){
