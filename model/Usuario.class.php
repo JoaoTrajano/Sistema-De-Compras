@@ -30,15 +30,16 @@ class UsuarioDados
         $nome = $this->nome_usuario;
         $senha = $this->senha_usuario;
 
-        $sql = "SELECT t.nome_usuario, t.nivel_usuario FROM tbusuario t WHERE t.usuario = '$nome' AND t.senha = '$senha'";
+        $sql = "SELECT t.id_usuario, t.nome_usuario, t.nivel_usuario FROM tbusuario t WHERE t.usuario = '$nome' AND t.senha = '$senha'";
         $consulta = $obj_conexao->consultar($sql);
 
         if ($consulta) {
             if (mysqli_num_rows($consulta)) {
                 while ($row = mysqli_fetch_array($consulta)) {
-                    $array = array("nome" => $row["nome_usuario"], "nivel" => $row["nivel_usuario"]);
+                    $array = array("nome" => $row["nome_usuario"], "nivel" => $row["nivel_usuario"], "id_usuario"=>$row["id_usuario"]);
                     $_SESSION['nome_usuario'] = $array['nome'];
                     $_SESSION['nivel_usuario'] = $array['nivel'];
+                    $_SESSION['codusuario'] = $array['id_usuario'];
                     $obj_conexao->desconectar();
                 }
             } else {

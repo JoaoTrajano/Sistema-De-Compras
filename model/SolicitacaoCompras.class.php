@@ -1,34 +1,24 @@
 <?php
 
+require_once "Conexao.class.php";
+
      class SolicitacaoDeCompras {
 
         private $codsolicitacao;
-        private $codsolicitante;
-        private $codproduto;
+        private $codsolicitanteProduto;
         private $datasolicitacao;
         private $observacao;
         private $prioridade;
 
-
-        public function setCodSolicitacao($codsolicitacao){
-            $this->codsolicitacao = $codsolicitacao;
-        }
         public function getCodSolicitacao(){
             return $this->codsolicitacao;
         }
 
-        public function setCodSolicitante($codsolicitante){
-            $this->codsolicitante = $codsolicitante;
+        public function setCodSolicitanteProduto($codsolicitanteProduto){
+            $this->codsolicitanteProduto = $codsolicitanteProduto;
         }
-        public function getCodSolicitante(){
-            return $this->codsolicitante;
-        }
-
-        public function setCodProduto($codproduto){
-            $this->codproduto = $codproduto;
-        }
-        public function getCodProduto(){
-            return $this->codproduto;
+        public function getCodsolicitanteProduto(){
+            return $this->codsolicitanteProduto;
         }
 
         public function setDataSolicitacao($datasolicitacao){
@@ -53,7 +43,19 @@
         }
 
         public function inserir(){
-            # code...
+
+            $data = $this->getDataSolicitacao();
+            $observacao = $this->getObervacao();
+            $nivel_prioridade = $this->getPrioridade();
+            $codsolicitanteProduto = $this->getCodsolicitanteProduto();
+            
+            $conexao = new Conexao('localhost','root','');
+            $sql = "INSERT INTO tbsolicitacao(datasolicitacao,observacao,prioridade,codsolicitanteproduto) 
+            VALUES('$data','$observacao','$nivel_prioridade','$codsolicitanteProduto')";
+
+            $consulta = $conexao->consultar($sql);
+            return $consulta;
+
         }
 
         public function editar(){

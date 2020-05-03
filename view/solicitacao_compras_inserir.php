@@ -3,10 +3,17 @@
 session_start();
 $nome = $_SESSION['nome_usuario'];
 $nivel_usuario = $_SESSION['nivel_usuario'];
+$codusuario = $_SESSION['codusuario'];
+
 $_SESSION['titulo_pagina_atual'] = 'Inserir Solicitações';
 
 require '..\model\VisaoUsuario.class.php';
+require '..\model\SolicitacaoCompras.class.php';
+require '..\model\SolicitacaoComprasProduto.class.php';
+
 $menu = new VisaoUsuario();
+$solicitacao = new SolicitacaoDeCompras();
+$solicitacaoProdutos = new SolicitacaoProduto();
 
 if(empty($nome) AND $nivel_usuario != 1){
     unset($_SESSION['nome_usuario']);
@@ -19,10 +26,46 @@ $resultado = '';
 $options = '';
 
 if(isset($_POST['inserir'])){
-    $resultado = '<span style="color:green;">Solicitação inserida com sucesso!</span>';
-    $dataEmissao = $_POST['data_emissao'];
-    $matriz = $_POST['matrizProduto'];
-    $obsrvacao = $_POST['obs'];
+    
+
+    if(isset($_POST['data_emissao'])){
+        $dataEmissao = $_POST['data_emissao'];
+    }
+
+    if(isset($_POST['matrizProduto'])){
+        $matriz = $_POST['matrizProduto'];
+    }
+
+    if(isset($_POST['obs'])){
+        $obsrvacao = $_POST['obs'];
+    }
+
+    if(isset($_POST['nivelPrioridade'])){
+        $nivelPrioridade = $_POST['nivelPrioridade'];
+    }
+
+    $solicitacao->setDataSolicitacao($dataEmissao);
+    $solicitacao->setObservacao($obsrvacao);
+    $solicitacao->setPrioridade($nivelPrioridade);
+    $solicitacao->setCodSolicitanteProduto($codusuario);
+
+    if($solicitacao->inserir()){
+        foreach($matriz as $codproduto => $quantidade){
+
+            if(!$solicitacaoProdutos->inserir($codusuario,$codproduto,$quantidade)){
+                $resultado = '<span style="color:red;">Houve um erro ao inserir a solicitação!teste</span>';
+                break;
+            }else{
+                $contador = $cont++;
+            }
+        }
+
+        if($contador == count($matriz)){
+            $resultado = '<span style="color:green;">Solicitação inserida com sucesso!</span>';
+        }
+    }else {
+        $resultado = '<span style="color:red;">Houve um erro ao inserir a solicitação!</span>';
+    }
 }
 
 $arrayPrioridade = array('A'=>'Prioridade Alta (A)','B'=>'Prioridade Média (B)','C'=>'Prioridade Alta (C)');
@@ -46,7 +89,7 @@ $corpo = '<br>
                         </div> 
                         <div class="col-md-9">
                             <label for="nome_solicitante"><strong>Nome do Emissor.</strong></label>
-                            <input name="nome_solicitante" id="nome_solicitante" type="text" class="form-control" placeholder="Digite seu nome.">
+                            <input name="nome_solicitante" id="nome_solicitante" type="text" class="form-control" value="'.$nome.'" readonly>
                         </div>
                     </div>
                     <br>
@@ -126,12 +169,12 @@ $corpo = '<br>
 
             var codproduto = $("#produto").attr("name");
 
-            var div_produtoCarrinho = document.querySelector("#produtoCarrinho");
+            var div_produtoCarrinho = document.querySelector(".produtoCarrinho");
 
             var input = document.createElement("input");
 
             input.setAttribute("value",valor);
-            input.setAttribute("name","matrizProduto[nomeProduto]["+codproduto+"]");
+            input.setAttribute("name","matrizProduto["+codproduto+"]");
             input.setAttribute("id","div"+codproduto);
             input.setAttribute("class","col-md-9 form-control");
             input.setAttribute("readonly","readonly");
@@ -146,8 +189,8 @@ $corpo = '<br>
             var input = document.createElement("input");
 
             input.setAttribute("value",valor);
-            input.setAttribute("name","matrizProduto[quantidadeProduto]["+codproduto+"]");
-            input.setAttribute("id","div"+codproduto);
+            input.setAttribute("name","matrizProduto["+codproduto+"]");
+            input.setAttribute("id","div"+codproduto+1);
             input.setAttribute("class","col-md-2 form-control");
             input.setAttribute("readonly","readonly");
             input.style.marginTop = "5";
@@ -165,7 +208,9 @@ $corpo = '<br>
             ImgExcluir.setAttribute("alt","excluit item");
 
             ImgExcluir.onclick = function removerItem(){
-                
+                $("#div"+codproduto).remove();
+                $("#div"+codproduto+1).remove();
+                $(this).remove();
             }
             divExcluir.setAttribute("id","div-excluir");
             divExcluir.style.marginLeft = "5";

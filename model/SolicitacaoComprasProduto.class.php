@@ -27,5 +27,16 @@
         public function getQuantidade(){
             return $this->quantidade;
         }
+
+        public function inserir($codsolicitanteproduto,$codproduto,$quantidade){
+            
+            $conexao = new Conexao('localhost','root','');
+            $sql = "INSERT INTO tbsolicitacao_produto(codsolicitanteproduto,codproduto,quantidade) 
+            VALUES('$codsolicitanteproduto','$codproduto','$quantidade')";
+
+            $consulta = $conexao->consultar($sql);
+            return $consulta;
+
+        }
     }
 ?>

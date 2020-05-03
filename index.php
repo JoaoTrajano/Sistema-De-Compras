@@ -8,6 +8,7 @@ session_start();
 if (!isset($_SESSION['nome_usuario'])) {
     $_SESSION['nome_usuario'] = '';
     $_SESSION['nivel_usuario'] = '';
+    $_SESSION['id_usuario'] = '';
 }
 
 if (isset($_POST["confirmar"])) {
