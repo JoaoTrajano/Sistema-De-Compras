@@ -5,6 +5,7 @@ require_once "model/VisaoUsuario.class.php";
 $v = new VisaoUsuario();
 
 session_start();
+
 if (!isset($_SESSION['nome_usuario'])) {
     $_SESSION['nome_usuario'] = '';
     $_SESSION['nivel_usuario'] = '';
